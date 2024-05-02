@@ -446,7 +446,7 @@ int main(int argc, char *argv[])
    olabel *h_label[LABELS];
 #endif
 
-#if defined(__linux__) || defined(__NetBSD__)
+#if defined(__FreeBSD__) || defined(__linux__) || defined(__NetBSD__)
    okeyboard *h_keyboard;
 #endif
 
@@ -767,7 +767,7 @@ int main(int argc, char *argv[])
       i_label_resize(h_label[i_count], f_scale);
 #endif
 
-#if defined(__linux__) || defined(__NetBSD__)
+#if defined(__FreeBSD__) || defined(__linux__) || defined(__NetBSD__)
    h_keyboard = h_keyboard_create(x_display); /* Only works with Linux */
 #endif
 
@@ -841,7 +841,7 @@ int main(int argc, char *argv[])
                h_processor->keypressed = False; /* Don't clear the status bit here!! */
             }
             break;
-#if defined(__linux__) || defined(__NetBSD__)
+#if defined(__FreeBSD__) || defined(__linux__) || defined(__NetBSD__)
          case KeyPress :
             h_key_pressed(h_keyboard, x_display, x_event.xkey.keycode, x_event.xkey.state); /* Attempts to translate a key code into a character */
             if (h_keyboard->key == (XK_BackSpace & 0x1f)) h_keyboard->key = XK_Escape & 0x1f; /* Map backspace to escape */
